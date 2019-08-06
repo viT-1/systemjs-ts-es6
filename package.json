@@ -1,0 +1,18 @@
+{
+    "name": "systemjs-ts-es6",
+    "version": "0.0.1",
+    "description": "An examlple how to bundle typescript app to ES5 with SystemJS for IE11 and ES6 modules for other browsers",
+    "keywords": [
+        "typescript",
+        "nobundle",
+        "systemjs",
+        "es6 modules"
+    ],
+    "scripts": {
+        "deploy": "gulp deploy"
+    },
+    "devDependencies": {
+        "esm": "^3.2.25",
+        "gulp": "^4.0.2"
+    }
+}
