@@ -9,9 +9,13 @@
         "es6 modules"
     ],
     "scripts": {
-        "deploy": "gulp deploy"
+        "deploy": "gulp deploy",
+        "lint": "eslint src/**/*.{js,ts} *.{js,ts}"
     },
     "devDependencies": {
+        "eslint": "^5.16.0",
+        "eslint-config-airbnb-base": "^13.2.0",
+        "eslint-plugin-import": "^2.18.2",
         "esm": "^3.2.25",
         "gulp": "^4.0.2"
     }
