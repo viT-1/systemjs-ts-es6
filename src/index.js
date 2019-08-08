@@ -1,3 +1,3 @@
 (function index() {
-    console.log('index.js is Ok!');
+	console.log('index.js is Ok!');
 }());

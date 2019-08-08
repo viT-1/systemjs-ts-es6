@@ -8,15 +8,27 @@
         "systemjs",
         "es6 modules"
     ],
+    "eslintIgnore": [
+        "dist",
+        "node_modules"
+    ],
     "scripts": {
+        "clean": "rm -rf ./dist",
+        "predeploy": "npm run lint && npm run clean",
         "deploy": "gulp deploy",
-        "lint": "eslint src/**/*.{js,ts} *.{js,ts}"
+        "lint": "eslint **/*.{ts,json,js} *.*"
     },
     "devDependencies": {
-        "eslint": "^5.16.0",
-        "eslint-config-airbnb-base": "^13.2.0",
-        "eslint-plugin-import": "^2.18.2",
-        "esm": "^3.2.25",
-        "gulp": "^4.0.2"
+        "@typescript-eslint/eslint-plugin": "1.13.0",
+        "@typescript-eslint/parser": "1.13.0",
+        "eslint": "5.16.0",
+        "eslint-config-airbnb-typescript": "4.0.1",
+        "eslint-import-resolver-typescript": "1.1.1",
+        "eslint-plugin-import": "2.18.2",
+        "eslint-plugin-json": "1.4.0",
+        "esm": "3.2.25",
+        "gulp": "4.0.2",
+        "gulp-typescript": "5.0.1",
+        "typescript": "3.5.3"
     }
 }

@@ -1,0 +1,25 @@
+{
+	"extends": "../tsconfig.base.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"lib": [ "dom", "es2015" ],
+		"module": "system",
+		"moduleResolution": "node",
+		"target": "es5",
+
+		"baseUrl": ".",
+		"outDir": "dist",
+		"paths": {
+			"@common/*": ["./common.blocks/*"]
+		}
+	},
+	"include": [
+		"**/*.d.ts",
+		"**/*.ts"
+	],
+	"exclude": [
+		"**/node_modules/*",
+		"**/*.spec.ts"
+	]
+}
