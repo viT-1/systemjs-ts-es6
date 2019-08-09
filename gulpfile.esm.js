@@ -7,6 +7,8 @@ import {
 	parallel,
 } from 'gulp';
 
+import uglifyES from 'gulp-uglify-es';
+
 import { conf } from './app.conf';
 
 // Вместо этого predeploy rimraf в командной строке (package.json)
@@ -19,12 +21,14 @@ task('transpile',
 		const tsResult = tsApp.src()
 			.pipe(tsApp()).js;
 
-		return tsResult.pipe(dest(conf.dest));
+		return tsResult
+			.pipe(uglifyES())
+			.pipe(dest(conf.dest));
 	});
 
+// не js/ts файлы прогонять через transpile (tsconfig include) не будем
 task('copyIndex',
 	() => src([
-		`${conf.src}/index.js`,
 		`${conf.src}/index.htm`,
 	])
 		.pipe(dest(conf.dest)));

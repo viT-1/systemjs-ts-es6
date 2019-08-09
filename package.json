@@ -10,13 +10,25 @@
     ],
     "eslintIgnore": [
         "dist",
+        "distnode",
         "node_modules"
     ],
+    "_moduleAliases": {
+        "@common": "distnode/common.blocks"
+    },
     "scripts": {
         "clean": "rm -rf ./dist",
         "predeploy": "npm run lint && npm run clean",
         "deploy": "gulp deploy",
-        "lint": "eslint **/*.{ts,json,js} *.*"
+        "lint": "eslint **/*.{ts,json,js} *.*",
+        "clean.node": "rm -rf ./distnode",
+        "predeploy.node": "npm run clean.node",
+        "@comment:deploy.node": "only module:commonjs for using module-alias",
+        "deploy.node": "tsc --project ./src/tsconfig.node.json",
+        "postdeploy.node": "node ./distnode/index.node.js"
+    },
+    "dependencies": {
+        "module-alias": "2.2.1"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "1.13.0",
@@ -29,6 +41,7 @@
         "esm": "3.2.25",
         "gulp": "4.0.2",
         "gulp-typescript": "5.0.1",
+        "gulp-uglify-es": "1.0.4",
         "typescript": "3.5.3"
     }
 }
