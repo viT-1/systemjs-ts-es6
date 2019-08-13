@@ -25,12 +25,18 @@
         "predeploy.node": "npm run clean.node",
         "@comment:deploy.node": "only module:commonjs for using module-alias",
         "deploy.node": "tsc --project ./src/tsconfig.node.json",
-        "postdeploy.node": "node ./distnode/index.node.js"
+        "postdeploy.node": "node ./distnode/index.node.js",
+        "prewww": "tsc --project ./express.node/tsconfig.json",
+        "www": "node -r esm ./dist/express.node/express.node.js"
     },
     "dependencies": {
-        "module-alias": "2.2.1"
+        "express": "4.17.1",
+        "module-alias": "2.2.1",
+        "systemjs": "5.0.0"
     },
     "devDependencies": {
+        "@types/express": "^4.17.0",
+        "@types/node": "^12.7.1",
         "@typescript-eslint/eslint-plugin": "1.13.0",
         "@typescript-eslint/parser": "1.13.0",
         "eslint": "5.16.0",

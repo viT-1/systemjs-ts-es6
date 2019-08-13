@@ -1,8 +1,10 @@
-import tsconfig from './src/tsconfig.json';
-
-const dest = tsconfig.compilerOptions.outDir || 'dist';
+import path from 'path';
 
 export const conf = {
-	src: './src',
-	dest: `./${dest}`,
+	srcFolderName: 'src',
+	destFolderName: 'dist',
+	entryFileName: 'index.htm',
+	rootFolderPath: path.resolve(path.dirname('')),
 };
+
+export default conf;

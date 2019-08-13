@@ -1,2 +1,13 @@
 <!DOCTYPE html>
-<script src="index.js"></script>
+<head>
+	<script src="systemjs/system.js"></script>
+</head>
+<body>
+	<h1>Проба пера</h1>
+	<script>
+		System.import('./index.js')
+			.then(function () {
+				console.log('SystemJs index.js module is activated!');
+			})
+	</script>
+</body>
