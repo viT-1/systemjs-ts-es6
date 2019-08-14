@@ -2,7 +2,6 @@
 // @link: https://github.com/ilearnio/module-alias/issues/59
 require('module-alias/register');
 /* eslint-disable import/first */
-import Greeter from '@common/Greeter';
+import GreeterUse from '@common/GreeterUse';
 
-const gr = new Greeter('world');
-console.log(gr.greet());
+GreeterUse.say();

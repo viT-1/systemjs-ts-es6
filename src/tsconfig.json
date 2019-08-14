@@ -1,17 +1,11 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
-		"lib": [ "dom", "es2015" ],
 		"module": "system",
-		"moduleResolution": "node",
 		"target": "es5",
-
 		"baseUrl": ".",
 		"rootDir": ".",
-		"outFile": "../dist/bundle.js",
-		"paths": {
-			"@common/*": ["./common.blocks/*"]
-		}
+		"outFile": "../dist/bundle.js"
 	},
 	"include": [
 		"**/*.ts"
