@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <head>
 	<script src="systemjs/system.js"></script>
+	<script src="systemjs/named-register.js"></script>
+	<link rel="icon" href="https://github.com/favicon.ico">
 </head>
 <body>
 	<h1>Test SystemJS</h1>
-	<script type="systemjs-importmap" src="systemjs/importmap.json"></script>
 	<script>
-		System.import('index')
+		System.import('./bundle.js')
 			.then(function () {
 				console.log('SystemJs index.js module is activated!');
+				System.import('index');
 			})
 	</script>
 </body>

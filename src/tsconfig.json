@@ -8,7 +8,7 @@
 
 		"baseUrl": ".",
 		"rootDir": ".",
-		"outDir": "../dist",
+		"outFile": "../dist/bundle.js",
 		"paths": {
 			"@common/*": ["./common.blocks/*"]
 		}
