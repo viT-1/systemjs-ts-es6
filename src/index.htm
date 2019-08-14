@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <head>
-	<script src="systemjs/system.js"></script>
+	<script src="bluebird.core.min.js"></script><!--IE 7-11 Promise polyfill -->
+	<script src="systemjs/s.min.js"></script>
 	<script src="systemjs/named-register.js"></script>
 	<link rel="icon" href="https://github.com/favicon.ico">
 </head>
 <body>
 	<h1>Test SystemJS</h1>
+	<p>Just check your console, it's working, hooray!</p>
 	<script>
 		System.import('./bundle.js')
 			.then(function () {
-				console.log('SystemJs index.js module is activated!');
+				console.log('SystemJs bundle is loaded!');
 				System.import('index');
 			})
 	</script>

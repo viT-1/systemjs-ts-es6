@@ -39,9 +39,20 @@ task('copyEntry',
 
 task('copySystemJs',
 	() => src([
-		path.resolve('node_modules', 'systemjs', 'dist', 'system.js'),
+		path.resolve('node_modules', 'systemjs', 'dist', 's.min.js'),
 		path.resolve('node_modules', 'systemjs', 'dist', 'extras', 'named-register.js'),
 	])
 		.pipe(dest(path.resolve(absDest, 'systemjs'))));
 
-task('deploy', parallel('transpile', 'copyEntry', 'copySystemJs'));
+task('iePromisePolyfill',
+	() => src([
+		path.resolve('node_modules', 'bluebird', 'js', 'browser', 'bluebird.core.min.js'),
+	])
+		.pipe(dest(absDest)));
+
+task('deploy', parallel(
+	'transpile',
+	'copyEntry',
+	'copySystemJs',
+	'iePromisePolyfill',
+));
