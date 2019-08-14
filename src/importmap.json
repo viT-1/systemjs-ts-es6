@@ -1,0 +1,6 @@
+{
+	"imports": {
+		"index": "/index.js",
+		"@common/Greeter": "/common.blocks/Greeter/Greeter.js"
+	}
+}

@@ -3,9 +3,10 @@
 	<script src="systemjs/system.js"></script>
 </head>
 <body>
-	<h1>Проба пера</h1>
+	<h1>Test SystemJS</h1>
+	<script type="systemjs-importmap" src="systemjs/importmap.json"></script>
 	<script>
-		System.import('./index.js')
+		System.import('index')
 			.then(function () {
 				console.log('SystemJs index.js module is activated!');
 			})

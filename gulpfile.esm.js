@@ -15,7 +15,7 @@ const root = appConf.rootFolderPath;
 const absSrc = path.resolve(root, appConf.srcFolderName);
 const absDest = path.resolve(root, appConf.destFolderName);
 
-// Путь к основному (тому, что для браузера) tsconfig
+// Transpiling for browser tsconfig
 const tsConfPath = path.resolve(absSrc, 'tsconfig.json');
 
 // Вместо этого predeploy rimraf в командной строке (package.json)
@@ -33,14 +33,14 @@ task('transpile',
 			.pipe(dest(absDest));
 	});
 
-// не js/ts файлы прогонять через transpile (tsconfig include) не будем
 task('copyEntry',
 	() => src([path.resolve(absSrc, appConf.entryFileName)])
 		.pipe(dest(absDest)));
 
 task('copySystemJs',
 	() => src([
-		'node_modules/systemjs/dist/system.js',
+		path.resolve('node_modules', 'systemjs', 'dist', 'system.js'),
+		path.resolve(absSrc, 'importmap.json'),
 	])
 		.pipe(dest(path.resolve(absDest, 'systemjs'))));
 
