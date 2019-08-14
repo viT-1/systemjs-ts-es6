@@ -41,7 +41,6 @@ task('copySystemJs',
 	() => src([
 		path.resolve('node_modules', 'systemjs', 'dist', 'system.js'),
 		path.resolve('node_modules', 'systemjs', 'dist', 'extras', 'named-register.js'),
-		path.resolve(absSrc, 'importmap.json'),
 	])
 		.pipe(dest(path.resolve(absDest, 'systemjs'))));
 
