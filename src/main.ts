@@ -1,4 +1,4 @@
 import GreeterUse from '@common/GreeterUse';
 
-console.log('index is Ok!');
+console.log('Main entry file is Ok!');
 GreeterUse.say();

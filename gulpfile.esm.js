@@ -1,5 +1,6 @@
 import path from 'path';
 import typescript from 'gulp-typescript';
+import replace from 'gulp-replace';
 // import del from 'del';
 import {
 	src,
@@ -32,6 +33,27 @@ task('transpile',
 			.pipe(uglifyES())
 			.pipe(dest(absDest));
 	});
+
+task('postdeploy.dev:replace-paths-not-index',
+	() => src([
+		`${absDest}/**/!(index).js`,
+	])
+		// typescript-transform-paths replaced alias with doublequoted paths
+		.pipe(replace('";', '/index.js";'))
+		.pipe(dest(absDest)));
+
+task('postdeploy.dev:replace-paths-index',
+	() => src([
+		`${absDest}/**/index.js`,
+	])
+		// my export with singlequoted paths
+		.pipe(replace('\';', '.js\';'))
+		.pipe(dest(absDest)));
+
+task('postdeploy.dev', parallel(
+	'postdeploy.dev:replace-paths-index',
+	'postdeploy.dev:replace-paths-not-index',
+));
 
 task('copyEntry',
 	() => src([path.resolve(absSrc, appConf.entryFileName)])
