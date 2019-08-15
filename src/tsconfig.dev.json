@@ -1,9 +1,10 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
-		"module": "commonjs",
+		"module": "es6",
+		"target": "esnext",
 		"baseUrl": ".",
-		"outDir": "../distnode",
+		"outDir": "../dist",
 		"plugins": [{ "transform": "typescript-transform-paths" }]
 	},
 	"include": [

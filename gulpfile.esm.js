@@ -15,16 +15,16 @@ const root = appConf.rootFolderPath;
 const absSrc = path.resolve(root, appConf.srcFolderName);
 const absDest = path.resolve(root, appConf.destFolderName);
 
-// Transpiling for browser tsconfig
-const tsConfPath = path.resolve(absSrc, 'tsconfig.json');
-
 // Вместо этого predeploy rimraf в командной строке (package.json)
 // task('clean',
 // done => del([conf.dest], done));
 
 task('transpile',
 	() => {
-		const tsApp = typescript.createProject(tsConfPath);
+		// Transpiling for browser tsconfig
+		const tsApp = typescript.createProject(
+			path.resolve(absSrc, 'tsconfig.json'),
+		);
 		const tsResult = tsApp.src()
 			.pipe(tsApp()).js;
 

@@ -13,25 +13,24 @@
         "distnode",
         "node_modules"
     ],
-    "_moduleAliases": {
-        "@common": "distnode/common.blocks"
-    },
     "scripts": {
         "clean": "rm -rf ./dist",
         "predeploy": "npm run lint && npm run clean",
         "deploy": "gulp deploy",
+        "predeploy.dev": "npm run clean",
+        "deploy.dev": "ttsc --project ./src/tsconfig.dev.json",
+        "1postdeploy.dev": "gulp deploy.dev:other",
         "lint": "eslint **/*.{ts,json,js} *.*",
         "clean.node": "rm -rf ./distnode",
         "predeploy.node": "npm run clean.node",
         "@comment:deploy.node": "only module:commonjs for using module-alias",
-        "deploy.node": "tsc --project ./src/tsconfig.node.json",
-        "postdeploy.node": "node ./distnode/index.node.js",
+        "deploy.node": "ttsc --project ./src/tsconfig.node.json",
+        "postdeploy.node": "node ./distnode/index.js",
         "prewww": "tsc --project ./express.node/tsconfig.json",
         "www": "node -r esm ./dist/express.node/express.node.js"
     },
     "dependencies": {
         "express": "4.17.1",
-        "module-alias": "2.2.1",
         "systemjs": "5.0.0"
     },
     "devDependencies": {
@@ -49,6 +48,9 @@
         "gulp": "4.0.2",
         "gulp-typescript": "5.0.1",
         "gulp-uglify-es": "1.0.4",
-        "typescript": "3.5.3"
+        "ts-node": "8.3.0",
+        "typescript": "3.5.3",
+        "ttypescript": "1.5.7",
+        "typescript-transform-paths": "1.1.8"
     }
 }
