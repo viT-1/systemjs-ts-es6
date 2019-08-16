@@ -25,8 +25,9 @@
         "predeploy.node": "npm run clean.node",
         "deploy.node": "ttsc --project ./src/tsconfig.node.json",
         "postdeploy.node": "node ./distnode/main.js",
-        "prewww": "tsc --project ./express.node/tsconfig.json",
-        "www": "node -r esm ./dist/express.node/express.node.js"
+        "wwwdeploy": "tsc --project ./express.node/tsconfig.json",
+		"www": "node -r esm ./dist/express.node/express.node.js",
+		"www.dev": "node -r esm ./dist/express.node/express.node.js --dev"
     },
     "dependencies": {
         "express": "4.17.1",

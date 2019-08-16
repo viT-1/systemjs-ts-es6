@@ -13,10 +13,14 @@ app.use(express.static(
 	{ cacheControl: false },
 ));
 
+const args = process.argv.slice(2);
+const entryName = args.length && args[0] && args[0] === '--dev'
+	? appConf.entryDevFileName : appConf.entryFileName;
+
 const absEntry = path.resolve(
 	appConf.rootFolderPath,
 	appConf.destFolderName,
-	appConf.entryFileName,
+	entryName,
 );
 
 app.get('/', (req, res): void => {

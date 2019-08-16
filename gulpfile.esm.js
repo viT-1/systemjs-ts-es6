@@ -34,6 +34,10 @@ task('transpile',
 			.pipe(dest(absDest));
 	});
 
+task('postdeploy.dev:copyEntry',
+	() => src([path.resolve(absSrc, appConf.entryDevFileName)])
+		.pipe(dest(absDest)));
+
 task('postdeploy.dev:replace-paths-not-index',
 	() => src([
 		`${absDest}/**/!(index).js`,
@@ -51,6 +55,7 @@ task('postdeploy.dev:replace-paths-index',
 		.pipe(dest(absDest)));
 
 task('postdeploy.dev', parallel(
+	'postdeploy.dev:copyEntry',
 	'postdeploy.dev:replace-paths-index',
 	'postdeploy.dev:replace-paths-not-index',
 ));
