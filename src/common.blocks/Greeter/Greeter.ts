@@ -1,3 +1,5 @@
+import { conf } from './Greeter.conf';
+
 class Greeter {
 	private greeting: string;
 
@@ -6,7 +8,7 @@ class Greeter {
 	}
 
 	public greet(): string {
-		return `Hello, ${this.greeting}`;
+		return `${conf.greetText}, ${this.greeting}`;
 	}
 }
 

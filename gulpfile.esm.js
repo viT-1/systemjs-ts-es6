@@ -44,6 +44,7 @@ task('postdeploy.dev:replace-paths-not-index',
 	])
 		// typescript-transform-paths replaced alias with doublequoted paths
 		.pipe(replace('";', '/index.js";'))
+		.pipe(replace('.conf\';', '.conf.js\';'))
 		.pipe(dest(absDest)));
 
 task('postdeploy.dev:replace-paths-index',
