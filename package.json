@@ -23,7 +23,6 @@
         "lint": "eslint **/*.{ts,json,js} *.*",
         "clean.node": "rm -rf ./distnode",
         "predeploy.node": "npm run clean.node",
-        "@comment:deploy.node": "only module:commonjs for using module-alias",
         "deploy.node": "ttsc --project ./src/tsconfig.node.json",
         "postdeploy.node": "node ./distnode/main.js",
         "prewww": "tsc --project ./express.node/tsconfig.json",
