@@ -43,16 +43,15 @@ task('postdeploy.dev:replace-paths-not-index',
 		`${absDest}/**/!(index).js`,
 	])
 		// typescript-transform-paths replaced alias with doublequoted paths
-		.pipe(replace('";', '/index.js";'))
-		.pipe(replace('.conf\';', '.conf.js\';'))
+		.pipe(replace(/(from "\.)((?:(?!\.js|\.conf|\.html).)*)(";)/g, '$1$2/index.js$3'))
+		.pipe(replace('.conf";', '.conf.js";'))
 		.pipe(dest(absDest)));
 
 task('postdeploy.dev:replace-paths-index',
 	() => src([
 		`${absDest}/**/index.js`,
 	])
-		// my export with singlequoted paths
-		.pipe(replace('\';', '.js\';'))
+		.pipe(replace('";', '.js";'))
 		.pipe(dest(absDest)));
 
 task('postdeploy.dev', parallel(
