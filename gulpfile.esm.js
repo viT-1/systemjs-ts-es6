@@ -1,5 +1,4 @@
 import path from 'path';
-import typescript from 'gulp-typescript';
 import replace from 'gulp-replace';
 // import del from 'del';
 import {
@@ -8,7 +7,6 @@ import {
 	task,
 	parallel,
 } from 'gulp';
-import uglifyES from 'gulp-uglify-es';
 
 import appConf from './app.conf';
 
@@ -19,20 +17,6 @@ const absDest = path.resolve(root, appConf.destFolderName);
 // Вместо этого predeploy rimraf в командной строке (package.json)
 // task('clean',
 // done => del([conf.dest], done));
-
-task('transpile',
-	() => {
-		// Transpiling for browser tsconfig
-		const tsApp = typescript.createProject(
-			path.resolve(absSrc, 'tsconfig.json'),
-		);
-		const tsResult = tsApp.src()
-			.pipe(tsApp()).js;
-
-		return tsResult
-			.pipe(uglifyES())
-			.pipe(dest(absDest));
-	});
 
 task('postdeploy.dev:copyEntry',
 	() => src([path.resolve(absSrc, appConf.entryDevFileName)])
@@ -77,8 +61,7 @@ task('iePromisePolyfill',
 	])
 		.pipe(dest(absDest)));
 
-task('deploy', parallel(
-	'transpile',
+task('postdeploy', parallel(
 	'copyEntry',
 	'copySystemJs',
 	'iePromisePolyfill',
