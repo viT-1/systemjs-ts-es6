@@ -22,10 +22,9 @@ task('postdeploy.dev:replace-paths-not-index',
 		`${absDest}/**/!(index).js`,
 	])
 		// typescript-transform-paths replaced alias with doublequoted paths
-		.pipe(replace(/(from "\.)((?:(?!\.js|\.conf|\.html).)*)(";)/g, '$1$2/index.js$3'))
-		// incorrect resolving modules by typescript-transform-paths v2
+		// incorrect resolving modules by typescript-transform-paths v2, needs extension still!
 		// https://github.com/LeDDGroup/typescript-transform-paths/issues/34#issuecomment-694633911
-		.pipe(replace('index/index', 'index'))
+		.pipe(replace(/(from "\.)((?:(?!\.js|\.conf|\.html).)*)(";)/g, '$1$2.js$3'))
 		.pipe(replace('.conf";', '.conf.js";'))
 		.pipe(dest(absDest)));
 
