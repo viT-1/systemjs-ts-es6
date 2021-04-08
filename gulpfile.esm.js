@@ -1,6 +1,5 @@
 import path from 'path';
 import replace from 'gulp-replace';
-// import del from 'del';
 import {
 	src,
 	dest,
@@ -14,10 +13,6 @@ const root = appConf.rootFolderPath;
 const absSrc = path.resolve(root, appConf.srcFolderName);
 const absDest = path.resolve(root, appConf.destFolderName);
 
-// Вместо этого predeploy rimraf в командной строке (package.json)
-// task('clean',
-// done => del([conf.dest], done));
-
 task('postdeploy.dev:copyEntry',
 	() => src([path.resolve(absSrc, appConf.entryDevFileName)])
 		.pipe(dest(absDest)));
@@ -28,6 +23,9 @@ task('postdeploy.dev:replace-paths-not-index',
 	])
 		// typescript-transform-paths replaced alias with doublequoted paths
 		.pipe(replace(/(from "\.)((?:(?!\.js|\.conf|\.html).)*)(";)/g, '$1$2/index.js$3'))
+		// incorrect resolving modules by typescript-transform-paths v2
+		// https://github.com/LeDDGroup/typescript-transform-paths/issues/34#issuecomment-694633911
+		.pipe(replace('index/index', 'index'))
 		.pipe(replace('.conf";', '.conf.js";'))
 		.pipe(dest(absDest)));
 
