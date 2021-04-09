@@ -5,7 +5,13 @@
 		"target": "esnext",
 		"baseUrl": ".",
 		"outDir": "../dist",
-		"plugins": [{ "transform": "typescript-transform-paths" }]
+		"plugins": [
+			{ "transform": "typescript-transform-paths" },
+			{
+				"transform": "@zoltu/typescript-transformer-append-js-extension/output/index.js",
+				"after": true,
+			}
+		]
 	},
 	"include": [
 		"**/*.ts"
