@@ -1,6 +1,6 @@
 {
     "name": "systemjs-ts-es6",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "An examlple how to bundle typescript app to ES5 with SystemJS for IE11 and ES6 modules for other browsers",
     "keywords": [
         "typescript",
@@ -49,6 +49,7 @@
         "eslint-import-resolver-typescript": "^2.4.0",
         "eslint-plugin-import": "2.22.1",
         "eslint-plugin-json": "2.1.2",
+        "eslint-plugin-markdown": "2.0.1",
         "esm": "3.2.25",
         "gulp": "4.0.2",
         "gulp-replace": "1.0.0",

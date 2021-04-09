@@ -6,17 +6,31 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:markdown/recommended",
         "plugin:@typescript-eslint/recommended",
         "airbnb-typescript/base"
     ],
     "ignorePatterns": "tsconfig.lint.json",
     "parserOptions": {
         "ecmaVersion": 6,
-        "extraFileExtensions": [".json"],
+        "extraFileExtensions": [".json", ".md"],
         "project": "tsconfig.lint.json",
         "sourceType": "module"
 	},
-	"plugins": ["import", "json"],
+	"plugins": [
+        "@typescript-eslint",
+        "import",
+        "json",
+        "markdown"
+    ],
+    "overrides": [
+        {
+            // Enable the Markdown processor for all .md files.
+            // Still doesn't work https://github.com/eslint/eslint-plugin-markdown/issues/114#issuecomment-620970670
+            "files": ["**/*.md"],
+            "processor": "markdown/markdown"
+        }
+    ],
     "rules": {
 		"eslint linebreak-style": [0, "error", "windows"],
         "global-require": 0,
