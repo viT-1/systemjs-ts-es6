@@ -17,28 +17,17 @@ task('postdeploy.dev:copyEntry',
 	() => src([path.resolve(absSrc, appConf.entryDevFileName)])
 		.pipe(dest(absDest)));
 
-task('postdeploy.dev:replace-paths-not-index',
+task('postdeploy.dev:add-js-extension',
 	() => src([
-		`${absDest}/**/!(index).js`,
+		`${absDest}/**/*.js`,
 	])
 		// typescript-transform-paths replaced alias with doublequoted paths
-		// incorrect resolving modules by typescript-transform-paths v2, needs extension still!
-		// https://github.com/LeDDGroup/typescript-transform-paths/issues/34#issuecomment-694633911
-		.pipe(replace(/(from "\.)((?:(?!\.js|\.conf|\.html).)*)(";)/g, '$1$2.js$3'))
-		.pipe(replace('.conf";', '.conf.js";'))
-		.pipe(dest(absDest)));
-
-task('postdeploy.dev:replace-paths-index',
-	() => src([
-		`${absDest}/**/index.js`,
-	])
-		.pipe(replace('";', '.js";'))
+		.pipe(replace(/(from "\.)((?:(?!\.js|\.html).)*)(";)/g, '$1$2.js$3'))
 		.pipe(dest(absDest)));
 
 task('postdeploy.dev', parallel(
 	'postdeploy.dev:copyEntry',
-	'postdeploy.dev:replace-paths-index',
-	'postdeploy.dev:replace-paths-not-index',
+	'postdeploy.dev:add-js-extension',
 ));
 
 task('copyEntry',
