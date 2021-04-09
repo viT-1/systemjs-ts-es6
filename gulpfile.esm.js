@@ -27,7 +27,7 @@ task('postdeploy.dev:add-js-extension',
 
 task('postdeploy.dev', parallel(
 	'postdeploy.dev:copyEntry',
-	// 'postdeploy.dev:add-js-extension',
+	'postdeploy.dev:add-js-extension',
 ));
 
 task('copyEntry',
