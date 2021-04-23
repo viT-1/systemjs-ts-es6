@@ -1,17 +1,12 @@
 {
     "name": "systemjs-ts-es6",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "description": "An examlple how to bundle typescript app to ES5 with SystemJS for IE11 and ES6 modules for other browsers",
     "keywords": [
         "typescript",
         "nobundle",
         "systemjs",
         "es6 modules"
-    ],
-    "eslintIgnore": [
-        "dist",
-        "distnode",
-        "node_modules"
     ],
     "repository": {
         "type": "git",
@@ -40,12 +35,12 @@
     },
     "devDependencies": {
         "@types/express": "^4.17.11",
-        "@types/node": "^14.14.37",
-        "@typescript-eslint/eslint-plugin": "4.21.0",
-        "@typescript-eslint/parser": "4.21.0",
+        "@types/node": "^14.14.41",
+        "@typescript-eslint/eslint-plugin": "4.22.0",
+        "@typescript-eslint/parser": "4.22.0",
         "@zoltu/typescript-transformer-append-js-extension": "1.0.1",
         "bluebird": "3.7.2",
-        "eslint": "7.23.0",
+        "eslint": "7.24.0",
         "eslint-config-airbnb-typescript": "12.3.1",
         "eslint-import-resolver-typescript": "^2.4.0",
         "eslint-plugin-import": "2.22.1",
