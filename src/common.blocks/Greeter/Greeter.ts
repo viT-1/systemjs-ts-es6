@@ -1,4 +1,4 @@
-import { conf } from './Greeter.conf';
+import { conf } from './Greeter-conf';
 
 class Greeter {
 	private greeting: string;

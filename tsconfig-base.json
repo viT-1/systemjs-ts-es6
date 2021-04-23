@@ -12,5 +12,8 @@
 		"paths": {
 			"@common/*": ["./common.blocks/*"]
 		}
-	}
+	},
+	"exclude": [
+		"**/node_modules/*"
+	]
 }

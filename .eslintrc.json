@@ -10,11 +10,11 @@
         "plugin:@typescript-eslint/recommended",
         "airbnb-typescript/base"
     ],
-    "ignorePatterns": "tsconfig.lint.json",
+    "ignorePatterns": ["tsconfig-lint.json", "**/dist-node/*"],
     "parserOptions": {
         "ecmaVersion": 6,
         "extraFileExtensions": [".json", ".md"],
-        "project": "tsconfig.lint.json",
+        "project": "tsconfig-lint.json",
         "sourceType": "module"
 	},
 	"plugins": [

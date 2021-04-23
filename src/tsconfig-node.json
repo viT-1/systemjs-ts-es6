@@ -1,15 +1,12 @@
 {
-	"extends": "../tsconfig.base.json",
+	"extends": "../tsconfig-base.json",
 	"compilerOptions": {
 		"module": "commonjs",
 		"baseUrl": ".",
-		"outDir": "../distnode",
+		"outDir": "../dist-node",
 		"plugins": [{ "transform": "typescript-transform-paths" }]
 	},
 	"include": [
 		"**/*.ts"
-	],
-	"exclude": [
-		"**/*.spec.ts"
 	]
 }

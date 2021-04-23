@@ -7,17 +7,17 @@ import {
 	parallel,
 } from 'gulp';
 
-import appConf from './app.conf';
+import appConf from './app-conf';
 
 const root = appConf.rootFolderPath;
 const absSrc = path.resolve(root, appConf.srcFolderName);
 const absDest = path.resolve(root, appConf.destFolderName);
 
-task('postdeploy.dev:copyEntry',
+task('postdeploy-dev:copyEntry',
 	() => src([path.resolve(absSrc, appConf.entryDevFileName)])
 		.pipe(dest(absDest)));
 
-task('postdeploy.dev:add-js-extension',
+task('postdeploy-dev:add-js-extension',
 	() => src([
 		`${absDest}/**/*.js`,
 	])
@@ -25,9 +25,8 @@ task('postdeploy.dev:add-js-extension',
 		.pipe(replace(/(from "\.)((?:(?!\.js|\.html).)*)(";)/g, '$1$2.js$3'))
 		.pipe(dest(absDest)));
 
-task('postdeploy.dev', parallel(
-	'postdeploy.dev:copyEntry',
-	'postdeploy.dev:add-js-extension',
+task('postdeploy-dev', parallel(
+	'postdeploy-dev:copyEntry',
 ));
 
 task('copyEntry',

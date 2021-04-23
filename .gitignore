@@ -1,5 +1,5 @@
 dist/
-distnode/
+dist-node/
 node_modules/
 .git/
 .idea/
