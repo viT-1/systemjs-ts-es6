@@ -1,5 +1,4 @@
 import path from 'path';
-import replace from 'gulp-replace';
 import {
 	src,
 	dest,
@@ -15,14 +14,6 @@ const absDest = path.resolve(root, appConf.destFolderName);
 
 task('postdeploy-dev:copyEntry',
 	() => src([path.resolve(absSrc, appConf.entryDevFileName)])
-		.pipe(dest(absDest)));
-
-task('postdeploy-dev:add-js-extension',
-	() => src([
-		`${absDest}/**/*.js`,
-	])
-		// typescript-transform-paths replaced alias with doublequoted paths
-		.pipe(replace(/(from "\.)((?:(?!\.js|\.html).)*)(";)/g, '$1$2.js$3'))
 		.pipe(dest(absDest)));
 
 task('postdeploy-dev', parallel(
