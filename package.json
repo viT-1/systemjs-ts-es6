@@ -30,7 +30,7 @@
         "www-dev": "node -r esm ./dist/express-node/express-node.js --dev"
     },
     "dependencies": {
-        "express": "4.17.1",
+        "express": "4.18.2",
         "systemjs": "5.0.0"
     },
     "devDependencies": {
